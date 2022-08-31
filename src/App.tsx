@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { TimerDisplay } from './components/timer-display';
 import { backgroundColor } from './color-constants';
 import { AppBar, Box, Button, Card, CardActions, CardContent, CardHeader, Container, CssBaseline, GlobalStyles, Grid, Link, Toolbar, Typography } from '@mui/material';
+import { Stopwatch } from './components/stopwatch';
+import { Timer } from './components/timer';
 
 function App() {
+  const [isStopwatch, setIsStopwatch] = useState(true);
+
+  const handleStopwatch = () => {
+    setIsStopwatch(true);
+  }
+
+  const handleTimer = () => {
+    setIsStopwatch(false);
+  }
+
   return (
     <div className="App">
         <React.Fragment>
@@ -17,15 +29,18 @@ function App() {
         elevation={0}
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
-        <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Stop Watch
-          </Typography>
+        <Toolbar sx={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Button onClick={handleStopwatch} size='large' variant="outlined" sx={{ width: 270, marginRight: 2 }}>
+            Stopwatch
+          </Button>
+          <Button onClick={handleTimer} size='large' variant="outlined" sx={{ width: 270, marginLeft: 2 }}>
+            Timer
+          </Button>
         </Toolbar>
       </AppBar>
       {/* Main content */}
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-        <TimerDisplay></TimerDisplay>
+        {isStopwatch ? <Stopwatch /> : <Timer/>}
       </Container>
       {/* End main content */}
     </React.Fragment>
