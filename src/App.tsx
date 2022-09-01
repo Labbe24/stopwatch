@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { TimerDisplay } from './components/timer-display';
 import { backgroundColor } from './color-constants';
 import { AppBar, Box, Button, Card, CardActions, CardContent, CardHeader, Container, CssBaseline, GlobalStyles, Grid, Link, Toolbar, Typography } from '@mui/material';
 import { Stopwatch } from './components/stopwatch';

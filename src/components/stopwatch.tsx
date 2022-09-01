@@ -17,18 +17,18 @@ const styles: {[key: string]: SxProps} = {
       width: 180,
       height: 80,
       color: "#FFFFFF",
-      backgroundColor: "#5cc46e",
+      backgroundColor: "#5BB318",
       '&:hover': {
-          backgroundColor: "#33b249",
+          backgroundColor: "#7DCE13",
         }
     },
     stopBtn: {
       width: 180,
       height: 80,
       color: "#FFFFFF",
-      backgroundColor: "#fa523c",
+      backgroundColor: "#FF1E00",
       '&:hover': {
-          backgroundColor: "#FF1E00",
+          backgroundColor: "#fa523c",
         }
     },
     saveBtn: {
@@ -42,7 +42,7 @@ interface Props {
 }
 
 export const Stopwatch: FC<Props> = React.memo(() => {
-    const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -53,16 +53,16 @@ export const Stopwatch: FC<Props> = React.memo(() => {
     if(isActive)
     {
       const interval = setInterval(() => {
-        if(seconds >= 59)
-        {
-          setSeconds(1);
-          setMinutes(minutes => minutes + 1);
-        }
-        else if(seconds >= 59 && minutes >= 59)
+        if(seconds >= 59 && minutes >= 59)
         {
           setSeconds(1);
           setMinutes(1);
           setHours(hours => hours + 1);
+        }
+        else if(seconds >= 59)
+        {
+          setSeconds(1);
+          setMinutes(minutes => minutes + 1);
         }
         else
         {
@@ -88,6 +88,7 @@ export const Stopwatch: FC<Props> = React.memo(() => {
   const resetHandler = () => {
     setSeconds(0);
     setMinutes(0);
+    setHours(0);
     setSplitTimes([]);
   };
 
